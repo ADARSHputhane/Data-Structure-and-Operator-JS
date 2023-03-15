@@ -397,3 +397,78 @@ console.log(staffUnique);
 console.log(new Set(staff).size);
 
 //----------------Maps----------------------//
+// a map is used to map values to keys In maps they key can be any type. But in object the key is always string
+
+const rest = new Map();
+rest.set("name", "Indian Masala"); // set method is used to add items in the map (key,value)
+rest.set(1, "India");
+rest.set(2, "London");
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open(❁´◡`❁)")
+  .set(false, "We are closed (┬┬﹏┬┬)"); // TO SET multiple values
+
+// TO read the data we use get method
+
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+// Method on map
+
+console.log(rest.has("categories")); // return ture or flase value
+rest.delete(2); // delets the value at that key
+console.log(rest);
+
+console.log(rest.size);
+// rest.clear(); to clear all the properties
+
+// Using array or object as map keys
+
+// rest.set([1, 2], "Test");
+// console.log(rest.get([1, 2]));
+// To avoid this above we use
+const arr = [1, 2];
+rest.set(arr, "test");
+console.log(rest.get(arr));
+
+const question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct !"],
+  [false, "Try again"],
+]); // TO set the values while declearing the map
+
+console.log(question);
+
+// Comvert object to map
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Iterattion on maps
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") {
+    console.log(key, value);
+  }
+  // typeof key === "number"
+  //   ? console.log(key, value)
+  //   : console.log("not any number");
+}
+// const answer = Number(prompt("Your answer"));
+// console.log(question.get(answer));
+
+// Convert Map to array
+
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
