@@ -362,3 +362,38 @@ for (const [key, { open, close }] of entries) {
 }
 
 //----------------------Sets-----------------------------//
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Rissotto",
+  "Pasta",
+  "Pizza",
+]); // Sets do not contain any double values and they are also an array and the order of the set is irrevalant
+
+console.log(ordersSet);
+
+// Working with sets
+//Sets do not have any index like orderSet[0] which will give undefined
+
+console.log(ordersSet.size); // Its called size not length
+
+console.log(ordersSet.has("Pizza"));
+console.log(ordersSet.has("Bread"));
+ordersSet.add("Garlic Bread");
+ordersSet.delete("Rissotto");
+console.log(ordersSet);
+// orderSet.clear() will clear the set
+for (const order of ordersSet) {
+  console.log(order);
+}
+
+// Use case of sets
+
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+
+const staffUnique = [...new Set(staff)]; // Return an array with spred operator
+console.log(staffUnique);
+console.log(new Set(staff).size);
+
+//----------------Maps----------------------//
