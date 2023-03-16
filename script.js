@@ -315,160 +315,283 @@ const restaurant = {
 
 //--------- Optional chaining(?.)--------------------------//
 
-if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon);
-if (restaurant.openingHours.fri) console.log(restaurant.openingHours.fri.open);
-// With Optional chaining
+// if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon);
+// if (restaurant.openingHours.fri) console.log(restaurant.openingHours.fri.open);
+// // With Optional chaining
 
-console.log(restaurant.openingHours.mon?.open); // only if the property before the quesion mark exists then it will execute the .method otherwise it will return undefined
-console.log(restaurant.openingHours.sat?.open); // only if the property before the quesion mark exists then it will execute the .method otherwise it will return undefined
+// console.log(restaurant.openingHours.mon?.open); // only if the property before the quesion mark exists then it will execute the .method otherwise it will return undefined
+// console.log(restaurant.openingHours.sat?.open); // only if the property before the quesion mark exists then it will execute the .method otherwise it will return undefined
 
-const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-for (const day of days) {
-  console.log(day);
-  const open = restaurant.openingHours[day]?.open ?? "closed "; //openingHours.mon , openingHours.tue ....
-  console.log(`On ${day}, we Open at ${open}`);
-}
+// for (const day of days) {
+//   console.log(day);
+//   const open = restaurant.openingHours[day]?.open ?? "closed "; //openingHours.mon , openingHours.tue ....
+//   console.log(`On ${day}, we Open at ${open}`);
+// }
 
-// On Method
-console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
-console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist");
+// // On Method
+// console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+// console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist");
 
-//ON arrays
-const users = [{ name: "Adarsh", email: "adarshputhane@haha.com" }];
-console.log(users[0]?.name ?? "User array empty");
+// //ON arrays
+// const users = [{ name: "Adarsh", email: "adarshputhane@haha.com" }];
+// console.log(users[0]?.name ?? "User array empty");
 
-// Looping Objects: Object Keys, Vakues and Entries
+// // Looping Objects: Object Keys, Vakues and Entries
 
-// Properties keys or names
-const properties = Object.keys(openingHours);
-console.log(properties); // Return an array of Keys
-let openStr = `We are open on ${properties.length} days: `;
-for (const day of properties) {
-  openStr += `${day}, `;
-}
-console.log(openStr);
+// // Properties keys or names
+// const properties = Object.keys(openingHours);
+// console.log(properties); // Return an array of Keys
+// let openStr = `We are open on ${properties.length} days: `;
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
 
-// Properties values
-const values = Object.values(openingHours);
-console.log(values);
+// // Properties values
+// const values = Object.values(openingHours);
+// console.log(values);
 
-//Entire object
-const entries = Object.entries(openingHours);
-console.log(entries);
+// //Entire object
+// const entries = Object.entries(openingHours);
+// console.log(entries);
 
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
 
-//----------------------Sets-----------------------------//
-const ordersSet = new Set([
-  "Pasta",
-  "Pizza",
-  "Pizza",
-  "Rissotto",
-  "Pasta",
-  "Pizza",
-]); // Sets do not contain any double values and they are also an array and the order of the set is irrevalant
+// //----------------------Sets-----------------------------//
+// const ordersSet = new Set([
+//   "Pasta",
+//   "Pizza",
+//   "Pizza",
+//   "Rissotto",
+//   "Pasta",
+//   "Pizza",
+// ]); // Sets do not contain any double values and they are also an array and the order of the set is irrevalant
 
-console.log(ordersSet);
+// console.log(ordersSet);
 
-// Working with sets
-//Sets do not have any index like orderSet[0] which will give undefined
+// // Working with sets
+// //Sets do not have any index like orderSet[0] which will give undefined
 
-console.log(ordersSet.size); // Its called size not length
+// console.log(ordersSet.size); // Its called size not length
 
-console.log(ordersSet.has("Pizza"));
-console.log(ordersSet.has("Bread"));
-ordersSet.add("Garlic Bread");
-ordersSet.delete("Rissotto");
-console.log(ordersSet);
-// orderSet.clear() will clear the set
-for (const order of ordersSet) {
-  console.log(order);
-}
+// console.log(ordersSet.has("Pizza"));
+// console.log(ordersSet.has("Bread"));
+// ordersSet.add("Garlic Bread");
+// ordersSet.delete("Rissotto");
+// console.log(ordersSet);
+// // orderSet.clear() will clear the set
+// for (const order of ordersSet) {
+//   console.log(order);
+// }
 
-// Use case of sets
+// // Use case of sets
 
-const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+// const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
 
-const staffUnique = [...new Set(staff)]; // Return an array with spred operator
-console.log(staffUnique);
-console.log(new Set(staff).size);
+// const staffUnique = [...new Set(staff)]; // Return an array with spred operator
+// console.log(staffUnique);
+// console.log(new Set(staff).size);
 
-//----------------Maps----------------------//
-// a map is used to map values to keys In maps they key can be any type. But in object the key is always string
+// //----------------Maps----------------------//
+// // a map is used to map values to keys In maps they key can be any type. But in object the key is always string
 
-const rest = new Map();
-rest.set("name", "Indian Masala"); // set method is used to add items in the map (key,value)
-rest.set(1, "India");
-rest.set(2, "London");
-rest
-  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
-  .set("open", 11)
-  .set("close", 23)
-  .set(true, "We are open(❁´◡`❁)")
-  .set(false, "We are closed (┬┬﹏┬┬)"); // TO SET multiple values
+// const rest = new Map();
+// rest.set("name", "Indian Masala"); // set method is used to add items in the map (key,value)
+// rest.set(1, "India");
+// rest.set(2, "London");
+// rest
+//   .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+//   .set("open", 11)
+//   .set("close", 23)
+//   .set(true, "We are open(❁´◡`❁)")
+//   .set(false, "We are closed (┬┬﹏┬┬)"); // TO SET multiple values
 
-// TO read the data we use get method
+// // TO read the data we use get method
 
-console.log(rest.get("name"));
-console.log(rest.get(true));
-console.log(rest.get(1));
+// console.log(rest.get("name"));
+// console.log(rest.get(true));
+// console.log(rest.get(1));
 
-const time = 21;
-console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+// const time = 21;
+// console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
 
-// Method on map
+// // Method on map
 
-console.log(rest.has("categories")); // return ture or flase value
-rest.delete(2); // delets the value at that key
-console.log(rest);
+// console.log(rest.has("categories")); // return ture or flase value
+// rest.delete(2); // delets the value at that key
+// console.log(rest);
 
-console.log(rest.size);
-// rest.clear(); to clear all the properties
+// console.log(rest.size);
+// // rest.clear(); to clear all the properties
 
-// Using array or object as map keys
+// // Using array or object as map keys
 
-// rest.set([1, 2], "Test");
-// console.log(rest.get([1, 2]));
-// To avoid this above we use
-const arr = [1, 2];
-rest.set(arr, "test");
-console.log(rest.get(arr));
+// // rest.set([1, 2], "Test");
+// // console.log(rest.get([1, 2]));
+// // To avoid this above we use
+// const arr = [1, 2];
+// rest.set(arr, "test");
+// console.log(rest.get(arr));
 
-const question = new Map([
-  ["question", "What is the best programming language in the world?"],
-  [1, "C"],
-  [2, "Java"],
-  [3, "JavaScript"],
-  ["correct", 3],
-  [true, "Correct !"],
-  [false, "Try again"],
-]); // TO set the values while declearing the map
+// const question = new Map([
+//   ["question", "What is the best programming language in the world?"],
+//   [1, "C"],
+//   [2, "Java"],
+//   [3, "JavaScript"],
+//   ["correct", 3],
+//   [true, "Correct !"],
+//   [false, "Try again"],
+// ]); // TO set the values while declearing the map
 
-console.log(question);
+// console.log(question);
 
-// Comvert object to map
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// // Comvert object to map
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
 
-// Iterattion on maps
-console.log(question.get("question"));
-for (const [key, value] of question) {
-  if (typeof key === "number") {
-    console.log(key, value);
+// // Iterattion on maps
+// console.log(question.get("question"));
+// for (const [key, value] of question) {
+//   if (typeof key === "number") {
+//     console.log(key, value);
+//   }
+//   // typeof key === "number"
+//   //   ? console.log(key, value)
+//   //   : console.log("not any number");
+// }
+// // const answer = Number(prompt("Your answer"));
+// // console.log(question.get(answer));
+
+// // Convert Map to array
+
+// console.log([...question]);
+// console.log([...question.entries()]);
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
+
+//--------------------------Strings---------------------------------// strings are like array it will convert into object
+const airline = "TAP Air India";
+const plane = "A380";
+
+// console.log(plane[0]);
+// console.log(...plane);
+// console.log("B737"[0]);
+// console.log(airline.length);
+// console.log(airline.indexOf("r")); // will return the index of the letter that apperes 1st
+// console.log(airline.lastIndexOf("i"));
+// console.log(airline.indexOf("portugal")); // Case sensative P and p will return -1 if its not there
+// console.log(airline.indexOf("India"));
+// console.log(airline.indexOf("india")); // will retrun -1 if its not present
+// console.log(airline.slice(4)); // slice will return the string that will be start stop and jump .slice(start,end)
+// console.log(airline.slice(4, 7));
+// console.log(airline.slice(0, airline.indexOf(" "))); // TO get the words in between from start to end ' '
+// console.log(airline.slice(0, airline.lastIndexOf(" ")));
+// console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+// console.log(airline.slice(-2)); // -value will return from the end of the string
+// console.log(airline.slice(1, -1));
+
+// const checkMiddleSeat = function (seat) {
+//   // B and E are middle seats
+//   // const s = seat.slice(-1);
+//   // s === "B" || s === "E"
+//   //   ? console.log("You got middle seat")
+//   //   : console.log("You got lucky");
+//   seat.slice(-1) === "B" || seat.slice(-1) === "E"
+//     ? console.log("You got middle seat")
+//     : console.log("You got lucky");
+// };
+
+// //B and E are middle seats
+
+// checkMiddleSeat("11B");
+// checkMiddleSeat("12C");
+// checkMiddleSeat("3E");
+// console.log(new String("Adarsh")); // Convert the string into an object
+// console.log(typeof new String("Adarsh"));
+// console.log(typeof new String("Adarsh").slice(1));
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix capitalization in name real world example
+const passenger = "adArsh";
+const passengerCorrectfun = function (name) {
+  const n = name.toLowerCase();
+  const passengerCorrect = n[0].toUpperCase() + n.slice(1);
+  console.log(passengerCorrect);
+};
+
+passengerCorrectfun(passenger);
+
+// Comparing the email
+
+const email = "hello@adarsh.io";
+const loginEmail = "  Hello@Adarsh.Io \n";
+const lowerEmail = loginEmail.toLowerCase().trim(); // .trim method return all the string without any space's
+// console.log(lowerEmail, loginEmail);
+console.log(email.toLowerCase().trim() === lowerEmail);
+
+// Replacing the part of the string
+
+const priceGB = "2,88,900₹";
+const priceUS = priceGB.replace("₹", "$").replace(",", "."); // replace will first appreance replace the character with the other character .replace(stringToBeReplace,stingToReplace)
+console.log(priceUS);
+
+// Replace all
+const priceReplaceAll = priceGB.replaceAll(",", ".");
+console.log(priceReplaceAll); // Replace all will replace all the value to the replace value
+
+//-----------using regular expression----------------//
+
+console.log(priceGB.replace(/,/g, ".")); // /g will indicate global
+
+// Method that will return boolean values
+
+const planeNew = "Airbus A320neo";
+console.log(planeNew.includes("A320")); // return true if it contains || false
+console.log(planeNew.includes("Boing"));
+console.log(planeNew.startsWith("Air")); // return true if it contains || false
+// Slipt method
+console.log("a+very+nice+string".split("+")); // Return the array where the slipt is accured in between
+console.log("Adrsh Puthane".split(" "));
+
+const [firstName, lastName] = "Adarsh Puthane".split(" ");
+console.log(firstName, lastName);
+// Join method
+const newName = ["Mr", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName); // Join method will return an string to join in between ' '
+
+const capitalizeName = function (name) {
+  const sliptNames = name.split(" ");
+  const namesUpper = [];
+  for (const split of sliptNames) {
+    // namesUpper.push(split[0].toUpperCase() + split.slice(1));
+    namesUpper.push(split.replace(split[0], split[0].toUpperCase()));
   }
-  // typeof key === "number"
-  //   ? console.log(key, value)
-  //   : console.log("not any number");
-}
-// const answer = Number(prompt("Your answer"));
-// console.log(question.get(answer));
+  console.log(namesUpper.join(" "));
+};
+capitalizeName("adarsh puthane");
 
-// Convert Map to array
+// Paddding-> adding the number of character to get desired lenghth of the string
 
-console.log([...question]);
-console.log([...question.entries()]);
-console.log([...question.keys()]);
-console.log([...question.values()]);
+const message = "Go to gate 23!";
+console.log(message.padStart(25, "+")); // takes 2 value the number of character to be added to get that length and the character to be added ' + '
+console.log("Adarsh".padStart(25, "+"));
+
+console.log(message.padStart(25, "+").padEnd(30, "="));
+
+const maskCreditCard = function (number) {
+  const str = number + ""; // String(number) is the same as that of number + ' '
+  const lastNumber = str.slice(-4);
+  console.log(lastNumber.padStart(str.length, "*"));
+};
+maskCreditCard(6752895291367);
+maskCreditCard(5479124657123);
+
+//Repeat Method allows us to repet a string multiple times
+const message2 = "Bad weather.... ALL Departues Deplayed..";
+console.log(message2.repeat(5));
